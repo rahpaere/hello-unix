@@ -63,7 +63,7 @@ fi
 echo Checking C conventions...
 
 gcc -c -o "$TMP/announce.o" "$PROJECT/announce.c"
-if nm "$TMP/announce.o" | grep -q '\s\+T\s\+announce$'
+if nm "$TMP/announce.o" | grep -q '\s\+T\s\+_\?announce$'
 then
 	echo The announce function is correctly defined in announce.c.
 else
@@ -71,7 +71,7 @@ else
 fi
 
 gcc -c -o "$TMP/main.o" "$PROJECT/main.c"
-if nm "$TMP/main.o" | grep -q '\s\+U\s\+announce$'
+if nm "$TMP/main.o" | grep -q '\s\+U\s\+_\?announce$'
 then
 	echo The announce function is correctly linked into main.c.
 else
@@ -108,7 +108,7 @@ fi
 
 gcc -P -E "$PROJECT/announce.h" > "$TMP/once"
 gcc -P -E -include "$PROJECT/announce.h" "$PROJECT/announce.h" > "$TMP/twice"
-if diff -q "$TMP/once" "$TMP/twice"
+if diff -Bwq "$TMP/once" "$TMP/twice"
 then
 	echo The announce.h header is correctly idempotent.
 else
