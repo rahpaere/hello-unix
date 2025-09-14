@@ -42,9 +42,9 @@ assignment, specifically the following.
   unpacked.
 * The result is one directory named `announce`.
 * The directory contains four files:
-  * `main.c`
+  * `yawp.h`
+  * `yawp.c`
   * `announce.c`
-  * `announce.h`
   * `Makefile`
 * Running `make` inside the `announce` directory builds a program named
   `announce`.
@@ -55,12 +55,12 @@ assignment, specifically the following.
 In addition, there are checks for some important C language style and
 conventions.
 
-* There is a function defined in `announce.c` named `announce`, which is used
-  in `main.c` to print the message.
-* Each of `announce.c` and `main.c` uses `#include` to incorporate the
-  `announce.h` header and get the declaration of the `announce` function.
+* There is a function defined in `yawp.c` named `yawp`, which is used
+  in `announce.c` to print the message.
+* Each of `yawp.c` and `announce.c` uses `#include` to incorporate the
+  `yawp.h` header and get the declaration of the `yawp` function.
 * The `#include` directive is never used to incorporate a `.c` file.
-* The `announce.h` header is idempotent, i.e. uses a guard macro so that using
+* The `yawp.h` header is idempotent, i.e. uses a guard macro so that using
   `#include` on it multiple times is safe.
 
 Interpreting the output
